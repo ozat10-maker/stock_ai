@@ -272,7 +272,8 @@ elif st.session_state.page == "analysis":
                             else:
                                 st.error(f"שגיאה קריטית בהשוואת ה-AI: {str(e)}")
                                 break
-                                     if response_text:
+                            else: st.error("לא נמצאו נתוני שוק עבור הסימולים שהוזנו.")
+                    if response_text:
                         st.write("---")
                         st.subheader(f"🤖 המלצת השוואה מה-AI")
                         st.markdown(response_text)
