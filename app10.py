@@ -184,7 +184,7 @@ elif st.session_state.page == "analysis":
                     potential_new_val = existing_val + additional_capital
                     potential_concen = (potential_new_val / st.session_state.total_portfolio_value) * 100
                     
-                    st.subheader("📊 טבלת ריצוז נתוני שינוי חשיפה (לפני מול אחרי)")
+                    st.subheader("📊 טבלת ריכוז נתוני שינוי חשיפה (לפני מול אחרי)")
                     overview_data = [
                         {"מדד": "שווי פוזיציה במניה", "מצב נוכחי (לפני)": f"\${existing_val:,.2f}", "מצב עתידי (אחרי)": f"\${potential_new_val:,.2f}"},
                         {"מדד": "אחוז ריכוזיות בתיק", "מצב נוכחי (לפני)": f"{current_concen:.1f}%", "מצב עתידי (אחרי)": f"{potential_concen:.1f}%"}
@@ -225,7 +225,6 @@ elif st.session_state.page == "analysis":
                         st.subheader("📊 דוח אנליטי מלא ומורחב")
                         st.markdown(response_full.text)
                     except Exception as e: st.error(f"שגיאה בהפקת הדוח המלא: {str(e)}")
-                    
     else:
         st.subheader("⚔️ השוואה בין מספר נכסים פוטנציאליים")
         tickers_list_raw = st.text_input("הזן סימולים להשוואה (מופרדים בפסיק):", "NVDA, AMD")
@@ -272,8 +271,8 @@ elif st.session_state.page == "analysis":
                             else:
                                 st.error(f"שגיאה קריטית בהשוואת ה-AI: {str(e)}")
                                 break
-          if response_text:
+                    if response_text:
                         st.write("---")
-                        st.subheader(f"🤖 {report_type} מה-AI ({report_lang})")
+                        st.subheader(f"🤖 המלצת השוואה מה-AI")
                         st.markdown(response_text)
                 else: st.error("לא נמצאו נתוני שוק עבור הסימולים שהוזנו.")
